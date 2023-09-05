@@ -1,0 +1,46 @@
+<div class="section-signup  ">
+    <div class="container " >
+        <h3 class="title is-3">Signup</h3>
+        <form action="" class="form"[formGroup]="signUpForm">
+            <div class="field">
+                <label for="" class="label"> Username</label>
+                <div class="control ">
+                    <input type="text" class="input"  formControlName="username">
+                </div>
+                <p class="help is-danger">This username is invalid</p>
+                {{signUpForm.get('username')?.errors | json}}
+            </div>
+            <div class="field">
+                <label for="" class="label"> password</label>
+                <div class="control">
+                    <input type="text" class="input"  formControlName="password">
+                </div>
+                {{signUpForm.get('password')?.errors | json}}
+            </div>
+    
+            <div class="field">
+                <label for="" class="label"> Confirm-password</label>
+                <div class="control">
+                    <input type="text" class="input"  formControlName="confirmPassword">
+                </div>
+                {{signUpForm.get('confirmPassword')?.errors | json}}
+            </div>
+
+            <div class="field is-grouped">
+
+                <div class="control">
+                    <button class="button is-primary">submit</button>
+                </div>
+                <div class="control">
+                    <button class="button is-danger">cancle</button>
+                </div>
+               
+            </div>
+    
+        </form>
+    </div>
+</div>
+<hr>
+ <p>form valid:{{signUpForm.valid}}</p>
+<p> form errord:{{signUpForm.errors| json}}</p>
+<p> form controls:{{signUpForm.value| json}}</p>
