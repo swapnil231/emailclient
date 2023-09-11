@@ -1,46 +1,70 @@
 <div class="section-signup  ">
-    <div class="container " >
+    <div class="container ">
         <h3 class="title is-3">Signup</h3>
-        <form action="" class="form"[formGroup]="signUpForm">
-            <div class="field">
+        <form action="" class="form" [formGroup]="signUpForm">
+            <!-- <div class="field">
                 <label for="" class="label"> Username</label>
                 <div class="control ">
-                    <input type="text" class="input"  formControlName="username">
+                    <input type="text" class="input" formControlName="username">
                 </div>
                 <p class="help is-danger">This username is invalid</p>
                 {{signUpForm.get('username')?.errors | json}}
-            </div>
-            <div class="field">
+            </div> -->
+            <app-input Inputtype="text" label="username" [control]="signUpForm.controls.username"></app-input>
+            <app-input Inputtype="password" label="password" [control]="signUpForm.controls.password"></app-input>
+            <app-input Inputtype="password" label="confirmPassword"
+                [control]="signUpForm.controls. passwordConfirmation"></app-input>
+
+
+            <!-- <div class="field">
                 <label for="" class="label"> password</label>
                 <div class="control">
-                    <input type="text" class="input"  formControlName="password">
+                    <input type="text" class="input" formControlName="password">
                 </div>
                 {{signUpForm.get('password')?.errors | json}}
             </div>
-    
+
             <div class="field">
                 <label for="" class="label"> Confirm-password</label>
                 <div class="control">
-                    <input type="text" class="input"  formControlName="confirmPassword">
+                    <input type="text" class="input" formControlName="confirmPassword">
                 </div>
                 {{signUpForm.get('confirmPassword')?.errors | json}}
-            </div>
+            </div> -->
+
+
+            <ng-container *ngIf="signUpForm.errors?.['passworddontmath']">
+                <p class="help is-danger">password dont Match</p>
+            </ng-container>
+
 
             <div class="field is-grouped">
 
                 <div class="control">
-                    <button class="button is-primary">submit</button>
+                    <button class="button is-primary" (click)="onsubmit()">submit</button>
                 </div>
                 <div class="control">
-                    <button class="button is-danger">cancle</button>
+                    <button class="button is-danger" (click)="oncancle() ">cancle</button>
                 </div>
-               
+
+                <ng-container *ngIf="signUpForm.errors?.['noccconnection']">
+
+                    <p class="help is-danger">no connection </p>
+
+                </ng-container>
+                <ng-container *ngIf="signUpForm.errors?.['unKownerror']">
+
+                    <p class="help is-danger">Unkown Error </p>
+
+                </ng-container>
+
             </div>
-    
+
         </form>
     </div>
 </div>
+
 <hr>
- <p>form valid:{{signUpForm.valid}}</p>
+<p>form valid:{{signUpForm.valid}}</p>
 <p> form errord:{{signUpForm.errors| json}}</p>
 <p> form controls:{{signUpForm.value| json}}</p>

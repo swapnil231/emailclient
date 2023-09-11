@@ -1,1 +1,47 @@
-<app-signup></app-signup>
+<!-- <app-signup></app-signup> -->
+<nav class="navbar is-info" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" routerLink="/">
+      <a class="button is-danger">
+        <strong>Angular-Email</strong>
+      </a>
+    </a>
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+
+        <div class="buttons">
+          <ng-container *ngIf="signin">
+            <a class="button is-white" routerLink="/inbox" routerLinkActive="is-active">
+              inbox
+            </a>
+            <a class="button is-primary" routerLink="/signout" routerLinkActive="is-active">
+              <strong>Signout</strong>
+            </a>
+          </ng-container>
+
+          <ng-container *ngIf="!signin">
+            <a class="button is-warning" routerLink="/signin" routerLinkActive="is-active">
+              signin
+            </a>
+            <a class="button is-primary" routerLink="/" routerLinkActive="is-active">
+              <strong>Signup</strong>
+            </a>
+          </ng-container>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>
