@@ -1,2 +1,20 @@
-<p>signin works!</p>
+<!-- <p>signin works!</p> -->
+<div class="container">
 
+  <h3 class="title is-4"> signin</h3>
+
+  <form [formGroup]="signInForm" class="form">
+
+    <app-input Inputtype="text" label="username" [control]="signInForm.controls.username"> </app-input>
+    <app-input Inputtype="password" label="password" [control]="signInForm.controls.password"> </app-input>
+
+    <ng-container *ngIf="signInForm.errors?.['creden']">
+      <p class="help is-danger">password or username wroong</p>
+    </ng-container>
+
+    <div class="field">
+      <button class="button is-black" (click)=" onsignin()"> signin</button>
+    </div>
+
+  </form>
+</div>
